@@ -25,7 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         $user = new User();
-        $user = $user->findOrFail(2)->parent;
+        //On test les relations dans tous les sens
+        $user = $user->findOrFail(2)->user_courses->first()->course->user_courses->first()->user;
 
         dd($user);
         return view('home');
