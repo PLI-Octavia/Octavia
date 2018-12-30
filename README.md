@@ -1,9 +1,9 @@
 # Octavia
 
-##BackOffice Laravel
+## BackOffice Laravel
 ## Installation Windows
 
-###Soft
+### Soft
 Grâce à laragon on va pouvoir monter le projet super vite.
 Il faut commencer par installer Laragon.
 
@@ -15,6 +15,26 @@ Une fois installé ça ouvre une fenêtre avec un éléphanten icone. Faire un
 
 clic droit > Préférences. Vérifier qu'il y a bien le auto host qui est coché et bien remplir en dessous l'input. Par exemple le mien est à {name}.local.heffiros.net
 
+Ensuite il va falloir autoriser le SSL. Clic droit > Apache > SSL > enabled
+
+Une fois que c'est bon on va devoir rajouter les règles CROS pour que le front puisse faire ses requêtes.
+
+Clic droit > Apache > site_enable > Choisissez celui d'Octavia.
+
+Et dans le vhost
+
+`<VirtualHost *:443>`
+
+Rajouter ces 3 lignes 
+
+`Header always set Access-Control-Allow-Origin "*"`
+
+`Header always set Access-Control-Allow-Methods "POST, PUT, GET, DELETE"`
+
+`Header always set Access-Control-Allow-Headers "*"`
+
+On reload apache et ça sera ok 
+ 
 De base Il n'y a pas PostgreSQL dans cette version de Laragon. Mais l'avantage de ce soft c'est qu'on peut rajouter tout ce qu'on veut facilement.
 
 Du coup aller sur le drive dans le dossier install et prendre les deux dossiers postgresql et pgadmin3 et les mettre dans laragon/bin
@@ -45,7 +65,7 @@ Ensuite on crée la DB Clic droit sur database Create Database appellez là octa
 
 Et boom on est bon pour la DB.
 
-###Projet
+### Projet
 
 On va créer un fake projet avec Laravel pour que laragon génère les url. Pour ça clic droit sur laragon encore une fois, puis QuickApp > Laravel. Dans le nom du projet mettez Octavia.
 
@@ -73,6 +93,6 @@ Et y a une page avec Laravel en gros et un sous menu.
 ## Installation MacOS
 A venir
 
-##Front Quasar
+## Front Quasar
 A venir
 
