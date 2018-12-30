@@ -3,11 +3,13 @@
 namespace App\Model;
 
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasApiTokens, Notifiable;
 
     public function __construct(array $attributes = array()) {
         parent::__construct($attributes);
