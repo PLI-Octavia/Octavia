@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\User;
+use App\Http\Resources\User as UserResource;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -24,11 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = new User();
-        //On test les relations dans tous les sens
-        $user = $user->findOrFail(2)->user_courses->first()->course->user_courses->first()->user;
+        $users = User::all();
 
-        dd($user);
-        return view('home');
+        return UserResource::collection($users);
     }
 }
