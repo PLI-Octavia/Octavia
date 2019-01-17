@@ -3,11 +3,13 @@
 namespace App\Model;
 
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasApiTokens, Notifiable;
 
     public function __construct(array $attributes = array()) {
         parent::__construct($attributes);
@@ -18,7 +20,7 @@ class User extends Authenticatable
     * @var array
     */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role'
     ];
     /**
     * The attributes that should be hidden for arrays.
