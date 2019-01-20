@@ -16,4 +16,9 @@ Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register');
 Route::group(['middleware' => 'auth:api'], function() {
     Route::post('details', 'UserController@details');
+
+    Route::group(['prefix' => 'games'], function() {
+        Route::get('/', ['uses' => 'GamesController@get']);
+        Route::get('/{game}', ['uses' => 'GamesController@getOne']);
+    });
 });
