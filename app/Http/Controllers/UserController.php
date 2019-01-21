@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use App\Http\Resources\User as UserResource;
 
 class UserController extends Controller
 {
@@ -48,6 +49,6 @@ class UserController extends Controller
     public function details()
     {
         $user = Auth::user();
-        return response()->json(['success' => $user], 200);
+        return response()->json(['success' => new UserResource($user)], 200);
     }
 }
