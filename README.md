@@ -76,6 +76,8 @@ et on checkout le projet dedans. Attention on doit pas avoir un sous dossier oct
 
 Dernier point de conf prendre le fichier .env sur le drive et remplacer celui existant.
 
+Il faut dans le .env modifier le APP_URL et mettre l'url que vous avez mis dans laragon
+
 On arrive au bout reste plus qu'à lancer les migrations pour remplir la DB.
 
 On installe le module auth : `php artisan make:auth`
