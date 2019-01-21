@@ -25,8 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $user = User::findOrFail(1);
+        return view('welcome')->withUser($user);
+        //return UserResource::collection($users);
+    }
 
-        return UserResource::collection($users);
+    public function create(Request $request)
+    {
+        $user = User::findOrFail(1);
+        $user->avatar = $request->file('avatar');
+        // dd($user);
+        $user->save();
+
+        return (view('welcome')->withUser($user));
     }
 }
