@@ -14,7 +14,6 @@ class User extends JsonResource
      */
     public function toArray($request)
     {
-        //dd($request);
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -23,7 +22,6 @@ class User extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
-        //return parent::toArray($request);
     }
 
 
