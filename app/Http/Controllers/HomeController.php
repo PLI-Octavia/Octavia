@@ -26,8 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::findOrFail(1);
-        return view('welcome')->withUser($user);
-        //return UserResource::collection($users);
+        //return view('welcome')->withUser($user);
+        return new UserResource(User::find(1));
+        //return UserResource::collection($user);
     }
 
     public function create(Request $request)

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Games;
 use Illuminate\Http\Request;
+use App\Http\Resources\Game as GameResource;
+use Illuminate\Support\Facades\Auth;
 
 class GamesController extends Controller
 {
@@ -12,7 +14,8 @@ class GamesController extends Controller
         if ($request->has('topic')) {
             return (Games::where('topic_id', $request->get('topic'))->paginate(1));
         } else {
-            return (Games::paginate(5));
+            $user = Auth::user();
+            return response()->json(['success' => GameResource::collection(Games::all())], 200);
         }
 
     }

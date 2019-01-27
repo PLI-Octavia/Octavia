@@ -21,7 +21,7 @@ class User extends Authenticatable implements \Czim\Paperclip\Contracts\Attachab
                     'auto-orient' => [],
                     'resize'      => ['dimensions' => '300x300'],
                 ],
-                'thumb' => '100x100',
+                'thumb' => '300x200',
             ],
             'attributes' => [
                 'variants' => true,
