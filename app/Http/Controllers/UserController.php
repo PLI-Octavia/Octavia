@@ -51,4 +51,20 @@ class UserController extends Controller
         $user = Auth::user();
         return response()->json(['success' => new UserResource($user)], 200);
     }
+
+    /**
+     * update user
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, User $user)
+    {
+        $authUser = Auth::user();
+        if($authUser->id == $user->id) {
+            $user->name = $request->name;
+            $user->save();
+            return response(200);
+        }
+        return response(403);
+    }
 }
