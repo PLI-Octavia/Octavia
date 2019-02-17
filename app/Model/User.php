@@ -13,6 +13,10 @@ class User extends Authenticatable implements \Czim\Paperclip\Contracts\Attachab
 
     use \Czim\Paperclip\Model\PaperclipTrait;
 
+    protected $fillable = [
+        'firstname', 'lastname', 'email', 'password','role'
+    ];
+
     public function __construct(array $attributes = [])
     {
         $this->hasAttachedFile('avatar', [
@@ -35,9 +39,7 @@ class User extends Authenticatable implements \Czim\Paperclip\Contracts\Attachab
     *
     * @var array
     */
-    protected $fillable = [
-        'firstname', 'lastname', 'email', 'password','role'
-    ];
+
     /**
     * The attributes that should be hidden for arrays.
     *
@@ -47,14 +49,9 @@ class User extends Authenticatable implements \Czim\Paperclip\Contracts\Attachab
         'password', 'remember_token',
     ];
 
-    public function parent()
-    {
-        return $this->hasOne('App\Model\User','id','parent_id');
-    }
-
     public function children()
     {
-        return $this->hasMany('App\Model\User','parent_id','id');
+        return $this->hasMany('App\Model\Child','parent_id','id');
     }
 
     public function user_courses()
