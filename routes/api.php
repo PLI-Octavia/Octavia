@@ -21,6 +21,11 @@ Route::group(['middleware' => 'auth:api'], function() {
         Route::get('/', ['uses' => 'GamesController@get']);
         Route::get('/{game}', ['uses' => 'GamesController@getOne']);
     });
+
+    Route::group(['prefix' => 'schoolclass', 'middleware' => 'auth:api'], function() {
+        Route::get('/', ['uses' => 'SchoolClassController@get']);
+    });
+
     Route::group(['prefix' => 'topics', 'middleware' => 'auth:api'], function() {
         Route::get('/', ['uses' => 'TopicController@getTopics']);
     });
