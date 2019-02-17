@@ -12,15 +12,16 @@ class GamesController extends Controller
     {
         if ($request->has('topic')) {
             return (Games::where('topic_id', $request->get('topic'))->paginate(1));
-        } else {
-            return response()->json(['success' => GameResource::collection(Games::all())], 200);
         }
-
+        return response()->json(['success' => GameResource::collection(Games::all())], 200);
     }
 
     public function getOne(Games $game)
     {
-        // ToDo check is $game is a good object
-        return $game;
+        if ($game != null) {
+            $game->topic = $game->topic->topic;
+            return response()->json(['success' => $game], 200);
+        }
+        return response(404);
     }
 }
