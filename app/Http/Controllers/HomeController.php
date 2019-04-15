@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,11 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = User::findOrFail(1);
-        dd($user->children);
-        //return view('welcome')->withUser($user);
-         // return new UserResource(User::find(1));
-        //return UserResource::collection($user);
+        return view('home');
     }
 
     public function create(Request $request)
