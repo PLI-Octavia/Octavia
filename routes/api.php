@@ -12,27 +12,30 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('login', 'UserController@login');
-Route::post('register', 'UserController@register');
-Route::group(['middleware' => 'auth:api'], function() {
-    Route::post('details', 'UserController@details');
-    Route::post('user/{user}', 'UserController@edit');
 
-    Route::group(['prefix' => 'child', 'middleware' => 'auth:api'], function() {
-        Route::post('/', ['uses' => 'ChildController@addChild']);
+Route::namespace('Api')->group(function () {
+    Route::post('login', 'ApiUserController@login');
+    Route::post('register', 'ApiUserController@register');
+    Route::group(['middleware' => 'auth:api'], function() {
+        Route::post('details', 'ApiUserController@details');
+        Route::post('user/{user}', 'ApiUserController@edit');
+
+        Route::group(['prefix' => 'child', 'middleware' => 'auth:api'], function() {
+            Route::post('/', ['uses' => 'ApiChildController@addChild']);
+        });
+
+        Route::group(['prefix' => 'games', 'middleware' => 'auth:api'], function() {
+            Route::get('/', ['uses' => 'ApiGamesController@get']);
+            Route::get('/{game}', ['uses' => 'ApiGamesController@getOne']);
+        });
+
+        Route::group(['prefix' => 'schoolclass', 'middleware' => 'auth:api'], function() {
+            Route::get('/', ['uses' => 'ApiSchoolClassController@get']);
+        });
+
+        Route::group(['prefix' => 'topics', 'middleware' => 'auth:api'], function() {
+            Route::get('/', ['uses' => 'ApiTopicController@getTopics']);
+        });
+
     });
-
-    Route::group(['prefix' => 'games', 'middleware' => 'auth:api'], function() {
-        Route::get('/', ['uses' => 'GamesController@get']);
-        Route::get('/{game}', ['uses' => 'GamesController@getOne']);
-    });
-
-    Route::group(['prefix' => 'schoolclass', 'middleware' => 'auth:api'], function() {
-        Route::get('/', ['uses' => 'SchoolClassController@get']);
-    });
-
-    Route::group(['prefix' => 'topics', 'middleware' => 'auth:api'], function() {
-        Route::get('/', ['uses' => 'TopicController@getTopics']);
-    });
-
 });

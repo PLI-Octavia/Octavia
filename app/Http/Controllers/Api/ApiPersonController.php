@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Model\SchoolClass;
 use Illuminate\Http\Request;
 use App\Http\Resources\SchoolClass as SchoolClassResources;
 
-class SchoolClassController extends Controller
+class ApiSchoolClassController extends Controller
 {
     public function get(Request $request)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Resources\User as UserResource;
 
-class UserController extends Controller
+class ApiUserController extends Controller
 {
     public function login()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\Auth;
 use App\Model\Child;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Child as ChildResource;
 use Validator;
 
-class ChildController extends Controller
+class ApiChildController extends Controller
 {
     public function addChild(Request $request)
     {

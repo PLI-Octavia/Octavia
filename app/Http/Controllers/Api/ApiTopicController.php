@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Model\Topics;
 use Illuminate\Http\Request;
 use App\Http\Resources\Topic as TopicResource;
-class TopicController extends Controller
+class ApiTopicController extends Controller
 {
     public function getTopics()
     {

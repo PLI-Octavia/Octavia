@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Model\Games;
 use Illuminate\Http\Request;
 use App\Http\Resources\Game as GameResource;
 
-class GamesController extends Controller
+class ApiGamesController extends Controller
 {
     public function get(Request $request)
     {
