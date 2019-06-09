@@ -27,14 +27,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function create(Request $request)
-    {
-        $user = User::findOrFail(1);
-        $user->avatar = $request->file('avatar');
-        // dd($user);
-        $user->save();
-
-        return (view('welcome')->withUser($user));
-    }
 }

@@ -16,3 +16,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/create', 'HomeController@create')->name('create');
+Route::get('/users', 'UserController@users')->name('user')->middleware('isAdmin');
+Route::get('/usersjson', 'UserController@usersJson')->name('userjson')->middleware('isAdmin');
