@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Model\Child;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ class ApiChildController extends Controller
 {
     public function addChild(Request $request)
     {
+        
         $currentAuthUser = Auth::user();
         $validator = Validator::make($request->all(), [
             'firstname' => 'required',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Model\SchoolClass;
 use Illuminate\Http\Request;
 use App\Http\Resources\SchoolClass as SchoolClassResources;
