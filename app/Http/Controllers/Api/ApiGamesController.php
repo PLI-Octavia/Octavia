@@ -21,6 +21,7 @@ class ApiGamesController extends Controller
     {
         if ($game != null) {
             $game->topic = $game->topic->topic;
+            $game->templates = $game->templates;
             return response()->json(['success' => $game], 200);
         }
         return response(404);

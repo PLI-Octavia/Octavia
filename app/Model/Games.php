@@ -10,4 +10,9 @@ class Games extends Model
     {
         return $this->hasOne('App\Model\Topics','id','topic_id');
     }
+
+    public function templates()
+    {
+        return $this->hasMany('App\Model\Template','game_id','id');
+    }
 }

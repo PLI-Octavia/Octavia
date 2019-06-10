@@ -22,6 +22,7 @@ class Game extends JsonResource
                 'name' => $this->topic->topic,
                 'id_topic' => $this->topic->id,
             ),
+            'templates' => $this->templates,
         ];
     }
 }
