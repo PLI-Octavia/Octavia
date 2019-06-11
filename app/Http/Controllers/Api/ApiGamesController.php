@@ -16,14 +16,4 @@ class ApiGamesController extends Controller
         }
         return response()->json(['success' => GameResource::collection(Games::all())], 200);
     }
-
-    public function getOne(Games $game)
-    {
-        if ($game != null) {
-            $game->topic = $game->topic->topic;
-            $game->templates = $game->templates;
-            return response()->json(['success' => $game], 200);
-        }
-        return response(404);
-    }
 }
