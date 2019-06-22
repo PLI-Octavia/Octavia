@@ -74,8 +74,13 @@
                         <ul class="sidebar-menu" data-widget="tree">
                             <li class="header">Menu</li>
                             <li>
-                                <a href="pages/widgets.html">
-                                    <span>Widgets</span>
+                                <a href="{{route('user')}}">
+                                    <span>Octivien</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route('games')}}">
+                                    <span>Games</span>
                                 </a>
                             </li>
                         </ul>
