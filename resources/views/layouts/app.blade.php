@@ -63,64 +63,34 @@
 
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <div class="navbar-custom-menu">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown user user-menu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="hidden-xs">Alexander Pierce</span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="user-footer">
-                                            <div class="pull-right">
-                                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    @endguest
+                    <!-- TODO deconnexion -->
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
-                    <ul class="sidebar-menu" data-widget="tree">
-                        <li class="header">Menu</li>
-                        <li>
-                            <a href="pages/widgets.html">
-                                <span>Widgets</span>
-                            </a>
-                        </li>
-                    </ul>
+                    @if (Auth::check())
+                        <ul class="sidebar-menu" data-widget="tree">
+                            <li class="header">Menu</li>
+                            <li>
+                                <a href="pages/widgets.html">
+                                    <span>Widgets</span>
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
                 </section>
                 <!-- /.sidebar -->
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        Dashboard
-                        <small>Version 1.0</small>
-                    </h1>
-                </section>
-
                 <!-- Main content -->
                 <section class="content">
-                    @yield('content')
+                    <div class="row">
+                        @yield('content')
+                    </div>
                 </section>
                 <!-- /.content -->
             </div>
