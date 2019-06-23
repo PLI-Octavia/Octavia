@@ -20,6 +20,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "google-charts": "^2.0.0",
         "gulp": "^4.0.2",
         "gulpfile": "^1.0.2",
         "laravel-elixir": "^6.0.0-18"

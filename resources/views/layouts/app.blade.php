@@ -13,21 +13,7 @@
     <script src="{{ asset('js/jquery.min.js') }}" defer></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}" defer></script>
     <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script src="{{ asset('js/raphael.min.js') }}" defer></script>
-    <script src="{{ asset('js/morris.min.js') }}" defer></script>
-    <script src="{{ asset('js/jquery.sparkline.min.js') }}" defer></script>
-    <script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}" defer></script>
-    <script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}" defer></script>
-    <script src="{{ asset('js/jquery.knob.min.js') }}" defer></script>
-    <script src="{{ asset('js/moment.min.js') }}" defer></script>
-    <script src="{{ asset('js/daterangepicker.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}" defer></script>
-    <script src="{{ asset('js/jquery.slimscroll.min.js') }}" defer></script>
-    <script src="{{ asset('js/fastclick.js') }}" defer></script>
-    <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
-    <script src="{{ asset('js/dashboard.js') }}" defer></script>
-    <script src="{{ asset('js/demo.js') }}" defer></script>
+    <script src="{{ asset('js/googleCharts.min.js') }}" defer></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
@@ -57,7 +43,7 @@
             <header class="main-header">
 
                 <!-- Logo -->
-                <a href="index2.html" class="logo">
+                <a href="{{ route('home') }}" class="logo">
                     <span class="logo-lg">Octavia Backoffice</span>
                 </a>
 

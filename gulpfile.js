@@ -13,7 +13,7 @@ function copy() {
     src(path + 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css').pipe(dest('./public/css/'));
     src(path + 'bootstrap-daterangepicker/daterangepicker.css').pipe(dest('./public/css/'));
     src('./vendor/almasaeed2010/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css').pipe(dest('./public/css/'));
-    //javascritp
+    //javascript
     src(path + 'jquery/dist/jquery.min.js').pipe(dest('./public/js/'));
     src(path + 'jquery-ui/jquery-ui.min.js').pipe(dest('./public/js/'));
     src(path + 'bootstrap/dist/js/bootstrap.min.js').pipe(dest('./public/js/'));
@@ -31,6 +31,7 @@ function copy() {
     src(path + 'fastclick/lib/fastclick.js').pipe(dest('./public/js/'));
     src('./vendor/almasaeed2010/adminlte/dist/js/adminlte.min.js').pipe(dest('./public/js/'));
     src('./vendor/almasaeed2010/adminlte/dist/js/pages/dashboard.js').pipe(dest('./public/js/'));
+    src('./node_modules/google-charts/dist/googleCharts.min.js').pipe(dest('./public/js/'));
     return src('./vendor/almasaeed2010/adminlte/dist/js/demo.js').pipe(dest('./public/js/'));
 }
 exports.default = copy
