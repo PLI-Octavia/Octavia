@@ -10,7 +10,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}" defer></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('js/googleCharts.min.js') }}" defer></script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer></script>
 
@@ -20,65 +24,80 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/AdminLTE.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/_all-skins.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-jvectormap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/daterangepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+<body class="hold-transition skin-blue sidebar-mini">
+    <div id="app" class="wrapper">
+        <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+
+            <header class="main-header">
+
+                <!-- Logo -->
+                <a href="{{ route('home') }}" class="logo">
+                    <span class="logo-lg">Octavia Backoffice</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- TODO deconnexion -->
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    @if (Auth::check())
+                        <ul class="sidebar-menu" data-widget="tree">
+                            <li class="header">Menu</li>
+                            <li>
+                                <a href="{{route('user')}}">
+                                    <span>Octivien</span>
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
                             </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                            <li>
+                                <a href="{{route('games')}}">
+                                    <span>Games</span>
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
+                </section>
+                <!-- /.sidebar -->
+            </aside>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        @yield('content')
+                    </div>
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 2.4.0
+                </div>
+                <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+                reserved.
+            </footer>
+
+            <div class="control-sidebar-bg"></div>
+        </div>
+        </body>
     </div>
 
     @yield('scripts') 
