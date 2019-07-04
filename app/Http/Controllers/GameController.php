@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Model\Games;
+use App\Model\Topics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use ZipArchive;
 
 class GameController extends Controller
 {
@@ -12,36 +14,51 @@ class GameController extends Controller
         return view('game/games');
     }
 
+    //view form
     public function upload() {
-        return view('game/upload');
+        $topics = Topics::all();
+        return view('game/upload',compact('topics'));
     }
+
+    //storage
     public function store(Request $request) {
         
-        $file = $request->file('file');
-      //Display File Name
-      echo 'File Name: '.$file->getClientOriginalName();
-      echo '<br>';
-   
-      //Display File Extension
-      echo 'File Extension: '.$file->getClientOriginalExtension();
-      echo '<br>';
-   
-      //Display File Real Path
-      echo 'File Real Path: '.$file->getRealPath();
-      echo '<br>';
-   
-      //Display File Size
-      echo 'File Size: '.$file->getSize();
-      echo '<br>';
-   
-      //Display File Mime Type
-      echo 'File Mime Type: '.$file->getMimeType();
-   
-      //Move Uploaded File
-      $destinationPath = '../storage/app/public/app/Games/';
-      $file->move($destinationPath,$file->getClientOriginalName());
-       //return view('game/upload');
+        
+        $file = $request->file('file');//file
+        $destinationPath = '../storage/app/public/app/Games/'.$this->clean($request->name).'_'.$request->version;//storage with name of game cleaned and number of version
+        $this->unzip($file,$destinationPath);//unzip
+
+        $games = new games;
+
+        $games->name = $request->name;
+        $games->description = $request->description;
+        $games->topic_id = $request->topic_id;
+        $games->version = $request->version;
+        $games->save();
+
+        return redirect()->route('games'); //redirection
+        
     }
+
+    //Unzip file
+    public function unzip($file,$destinationPath)
+    {
+        $zip = new ZipArchive;
+        if ($zip->open($file) === TRUE) {
+            $zip->extractTo($destinationPath);
+            $zip->close();
+            return 'ok';
+        } else {
+            return 'échec';
+        }
+    }
+
+    //clean string for name of game
+    function clean($string) {
+        $string = str_replace(' ', '_', $string); // Replaces all spaces with hyphens.
+     
+        return preg_replace('/[^A-Za-z0-9\-]/', '_', $string); // Removes special chars.
+     }
 
     public function gamesJson() {
         return datatables(Games::query())->toJson();
