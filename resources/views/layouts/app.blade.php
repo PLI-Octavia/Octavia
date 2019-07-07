@@ -69,6 +69,11 @@
                                     <span>Games</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route('templates')}}">
+                                    <span>Templates</span>
+                                </a>
+                            </li>
                         </ul>
                     @endif
                 </section>

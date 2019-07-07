@@ -28,4 +28,8 @@ Route::get('/games/upload','GameController@upload')->name('upload')->middleware(
 Route::post('/games/store','GameController@store')->name('games.store')->middleware('isAdmin');
 
 //Templates
+Route::get('/templates', 'TemplateController@templates')->name('templates')->middleware('isAdmin');
+Route::get('/templates/templatesjson', 'TemplateController@templatesjson')->name('templatesjson')->middleware('isAdmin');
 Route::get('/templates/upload/{game}', 'TemplateController@formUpload')->name('upload_template')->middleware('isAdmin');
+Route::post('/templates/upload/{game}', 'TemplateController@formUpload')->name('upload_template')->middleware('isAdmin');
+Route::get('/templates/delete/{template}', 'TemplateController@deleteTemplate')->name('delete_template')->middleware('isAdmin');

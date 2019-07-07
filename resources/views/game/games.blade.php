@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+        @if (isset($error))
+            <div class="bg-danger text-white">Les parametres ne sont pas valides</div>
+        @endif
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <h2>Utilisateurs</h2>
