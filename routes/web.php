@@ -24,6 +24,8 @@ Route::get('/usersjson', 'UserController@usersJson')->name('userjson')->middlewa
 //Games
 Route::get('/games', 'GameController@games')->name('games')->middleware('isAdmin');
 Route::get('/gamesjson', 'GameController@gamesJson')->name('gamesjson')->middleware('isAdmin');
+Route::get('/games/upload','GameController@upload')->name('upload')->middleware('isAdmin');
+Route::post('/games/store','GameController@store')->name('games.store')->middleware('isAdmin');
 
 //Templates
 Route::get('/templates/upload/{game}', 'TemplateController@formUpload')->name('upload_template')->middleware('isAdmin');
