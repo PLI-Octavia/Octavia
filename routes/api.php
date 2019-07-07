@@ -36,5 +36,9 @@ Route::namespace('Api')->group(function () {
         Route::group(['prefix' => 'topics', 'middleware' => 'auth:api'], function () {
             Route::get('/', ['uses' => 'ApiTopicController@getTopics']);
         });
+
+        Route::group(['prefix' => 'stat', 'middleware' => 'auth:api'], function () {
+            Route::post('score/add', ['uses' => 'ApiStatController@addScore']);
+        });
     });
 });
