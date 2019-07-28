@@ -28,7 +28,7 @@
             $('#table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ url('gamesjson') }}',
+                ajax: '{{ url('games/gamesjson') }}',
                 language: { url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/French.json"},
                 columns: [
                     { data: 'name', name: 'name' },

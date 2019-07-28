@@ -60,17 +60,17 @@
                         <ul class="sidebar-menu" data-widget="tree">
                             <li class="header">Menu</li>
                             <li>
-                                <a href="{{route('user')}}">
+                                <a href="{{route('user.list')}}">
                                     <span>Octivien</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('games')}}">
+                                <a href="{{route('games.list')}}">
                                     <span>Games</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('templates')}}">
+                                <a href="{{route('templates.list')}}">
                                     <span>Templates</span>
                                 </a>
                             </li>
