@@ -38,6 +38,7 @@ Route::namespace('Api')->group(function () {
         });
 
         Route::group(['prefix' => 'stat', 'middleware' => 'auth:api'], function () {
+            Route::post('/', ['uses' => 'ApiStatController@get']);
             Route::post('score/add', ['uses' => 'ApiStatController@addScore']);
         });
     });
